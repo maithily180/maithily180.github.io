@@ -1,60 +1,70 @@
 body {
+  font-family: "Poppins", sans-serif;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  padding: 0;
   background-color: #211427;
   color: white;
-  line-height: 1.6;
 }
 
 header {
   background-color: #5F29C5;
-  color: white;
+  padding: 20px;
   text-align: center;
-  padding: 2rem 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 main {
-  max-width: 900px;
-  margin: auto;
-  padding: 2rem 1rem;
-}
-
-h1, h2 {
-  margin-bottom: 0.5rem;
+  padding: 20px;
 }
 
 section {
-  margin-bottom: 3rem;
+  margin-bottom: 40px;
 }
 
-.socials {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 1rem;
+img.main-pic {
+  width: 200px;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+.local-images img {
+  width: 150px;
+  margin: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+a {
+  color: #FFD700;
+  text-decoration: none;
+  display: block;
+  margin-top: 5px;
 }
 
 .socials a {
-  color: #5F29C5;
-  text-decoration: none;
-  background-color: white;
-  padding: 0.6rem 1rem;
-  border-radius: 10px;
-  transition: background-color 0.3s, color 0.3s;
-  width: fit-content;
+  margin-right: 15px;
+  display: inline-block;
 }
 
-.socials a:hover {
+button {
   background-color: #5F29C5;
   color: white;
+  padding: 10px 20px;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-family: monospace;
+  margin-top: 10px;
 }
 
 footer {
-  text-align: center;
-  padding: 1rem;
   background-color: #5F29C5;
-  font-size: 0.9rem;
-  margin-top: 3rem;
-  color: white;
+  padding: 15px;
+  text-align: center;
+  margin-top: 40px;
 }
