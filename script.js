@@ -1,3 +1,15 @@
+// Global event tracking for Q2
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize event tracking
+    initEventTracking();
+    
+    // Log initial page view
+    logEvent('view', 'page load');
+    
+    // Initialize text analyzer
+    initTextAnalyzer();
+});
+
 // Tab functionality
 function openTab(tabId) {
     // Hide all tab content
@@ -16,96 +28,157 @@ function openTab(tabId) {
     document.getElementById(tabId).classList.add('active');
     document.querySelector(`button[onclick="openTab('${tabId}')"]`).classList.add('active');
     
-    // Record page view event for analytics
+    // Record page view event
     logEvent('view', `${tabId} tab`);
 }
 
-// Q2: Event tracking functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize event logger
-    initEventLogger();
-    
-    // Record initial page view
-    logEvent('view', 'page load');
-    
-    // Initialize text analyzer
-    initTextAnalyzer();
-});
-
-// Event tracking setup
-function initEventLogger() {
-    // Capturing clicks on all elements
+// Q2: Event tracking functionality for the entire website
+function initEventTracking() {
+    // Track all click events
     document.addEventListener('click', function(event) {
-        // Get the element that was clicked
         const element = event.target;
-        // Create a description of the element
-        let objectType = getElementType(element);
-        
-        // Log the event
+        const objectType = getElementDescription(element);
         logEvent('click', objectType);
     });
     
-    // Add specific listeners for demo elements in the Event Tracker tab
-    document.getElementById('demo-button').addEventListener('click', () => {});
-    document.getElementById('demo-dropdown').addEventListener('change', () => {
-        logEvent('interaction', 'dropdown selection');
+    // Track all view events for important elements
+    trackElementViews();
+    
+    // Track specific interactions
+    document.addEventListener('change', function(event) {
+        if (event.target.tagName === 'SELECT') {
+            logEvent('interaction', `dropdown selection: ${event.target.value}`);
+        }
     });
-    document.getElementById('demo-image').addEventListener('click', () => {});
-    document.getElementById('demo-text').addEventListener('click', () => {});
+    
+    // Track form inputs
+    const textInputs = document.querySelectorAll('input[type="text"], textarea');
+    textInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            logEvent('interaction', `focused on ${input.tagName.toLowerCase()}`);
+        });
+    });
+    
+    // Track CV download
+    const cvLink = document.querySelector('.cv-button');
+    if (cvLink) {
+        cvLink.addEventListener('click', function() {
+            logEvent('download', 'CV PDF');
+        });
+    }
 }
 
-// Helper function to determine element type
-function getElementType(element) {
-    // Check for ID
+// Function to get detailed description of elements
+function getElementDescription(element) {
+    // Elements with IDs
     if (element.id) {
         return `${element.tagName.toLowerCase()} #${element.id}`;
     }
     
-    // Check for specific elements
-    if (element.tagName === 'BUTTON') {
-        return `button containing "${element.innerText.trim()}"`;
+    // Process by element type
+    switch (element.tagName) {
+        case 'BUTTON':
+            return `button "${element.textContent.trim()}"`;
+            
+        case 'A':
+            const linkText = element.textContent.trim();
+            const href = element.getAttribute('href');
+            return `link "${linkText}" (${href})`;
+            
+        case 'IMG':
+            const alt = element.getAttribute('alt') || 'no alt text';
+            const src = element.getAttribute('src');
+            return `image "${alt}" (${src})`;
+            
+        case 'SELECT':
+            return 'dropdown menu';
+            
+        case 'INPUT':
+            const type = element.getAttribute('type') || 'text';
+            return `input field (${type})`;
+            
+        case 'TEXTAREA':
+            return 'text area';
+            
+        case 'LI':
+            return `list item "${element.textContent.trim().substring(0, 20)}${element.textContent.trim().length > 20 ? '...' : ''}"`;
+            
+        default:
+            // For other elements with text content
+            if (element.textContent && element.textContent.trim().length > 0) {
+                const text = element.textContent.trim();
+                const shortText = text.length > 20 ? text.substring(0, 20) + '...' : text;
+                return `${element.tagName.toLowerCase()} "${shortText}"`;
+            }
+            
+            // Default case
+            return element.tagName.toLowerCase();
     }
-    
-    if (element.tagName === 'A') {
-        return `link to "${element.href}" containing "${element.innerText.trim()}"`;
-    }
-    
-    if (element.tagName === 'IMG') {
-        return `image with alt "${element.alt || 'no alt text'}"`;
-    }
-    
-    if (element.tagName === 'SELECT') {
-        return 'dropdown menu';
-    }
-    
-    // For other elements, try to give useful info
-    if (element.innerText && element.innerText.trim().length > 0) {
-        const text = element.innerText.trim();
-        const shortText = text.length > 20 ? text.substring(0, 20) + '...' : text;
-        return `${element.tagName.toLowerCase()} containing "${shortText}"`;
-    }
-    
-    return element.tagName.toLowerCase();
 }
 
-// Function to log events to console and display
+// Track views of important elements using Intersection Observer
+function trackElementViews() {
+    // Elements to track views for
+    const elementsToTrack = [
+        '.profile-section',
+        '.hometown-section',
+        '.education-section',
+        '.achievements-section',
+        '.skills-section',
+        '.cv-section',
+        '.profile-image img',
+        '.hometown-images img'
+    ];
+    
+    // Set up the intersection observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Element is now visible
+                let elementDesc = '';
+                
+                // Get appropriate description based on element type
+                if (entry.target.tagName === 'IMG') {
+                    elementDesc = `image "${entry.target.alt || 'no alt text'}"`;
+                } else if (entry.target.classList.contains('profile-section')) {
+                    elementDesc = 'profile section';
+                } else if (entry.target.classList.contains('hometown-section')) {
+                    elementDesc = 'hometown section';
+                } else if (entry.target.classList.contains('education-section')) {
+                    elementDesc = 'education section';
+                } else if (entry.target.classList.contains('achievements-section')) {
+                    elementDesc = 'achievements section';
+                } else if (entry.target.classList.contains('skills-section')) {
+                    elementDesc = 'skills section';
+                } else if (entry.target.classList.contains('cv-section')) {
+                    elementDesc = 'CV section';
+                } else {
+                    elementDesc = entry.target.tagName.toLowerCase();
+                }
+                
+                logEvent('view', elementDesc);
+                
+                // Unobserve the element after the first view
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.5 // Element is considered visible when 50% of it is in viewport
+    });
+    
+    // Start observing all target elements
+    elementsToTrack.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+            observer.observe(element);
+        });
+    });
+}
+
+// Function to log events with timestamp to console (Q2)
 function logEvent(eventType, objectDescription) {
     const timestamp = new Date().toISOString();
-    const logMessage = `${timestamp} , ${eventType} , ${objectDescription}`;
-    
-    // Log to console
-    console.log(logMessage);
-    
-    // Add to display if the element exists
-    const logDisplay = document.getElementById('event-log-display');
-    if (logDisplay) {
-        const logEntry = document.createElement('div');
-        logEntry.textContent = logMessage;
-        logDisplay.appendChild(logEntry);
-        
-        // Auto-scroll to bottom
-        logDisplay.scrollTop = logDisplay.scrollHeight;
-    }
+    console.log(`${timestamp} , ${eventType} , ${objectDescription}`);
 }
 
 // Q3: Text analyzer functionality
