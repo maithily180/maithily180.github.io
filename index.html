@@ -1,44 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Maithily Bhala</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 </head>
-
 <body>
   <header>
     <h1>Maithily Bhala</h1>
   </header>
 
   <main>
-    <section>
+    <section id="about">
       <h2>About Me</h2>
       <p>
         Hey! I’m Maithily Bhala, a dual-degree student at IIIT Hyderabad, majoring in Computer Science and Geospatial Intelligence.
       </p>
-      <p style="margin-top: 1rem">
-        I’m someone who loves building things—whether it’s through code, design, or just good teamwork. I find myself just as excited solving algorithmic problems and writing clean backend logic as I am crafting intuitive user experiences or leading club initiatives. My coursework keeps me sharp (and yes, I genuinely enjoy it), but it’s the balance of academics, creative expression, and hands-on project work that really energizes me.
+      <p>
+        I love building things—through code, design, or teamwork. I enjoy writing clean backend logic as much as creating beautiful user interfaces or leading creative projects.
       </p>
-      <p style="margin-top: 1rem">
-        Currently, I serve as the <strong>Head of Design at DheemiLocal</strong> and am part of the <strong>Design Team at E-Cell, IIIT Hyderabad</strong>, where I’ve worked on everything from campaign design to branding for large-scale events. But I’m not just about design—I'm deeply into tech too, and have been part of multiple hackathons, coding projects, and collaborative builds that let me experiment with everything from networking to game dev.
+      <p>
+        Currently, I serve as the <strong>Head of Design at DheemiLocal</strong> and a designer at <strong>E-Cell, IIIT-H</strong>. I've worked on campaign design, branding, and tech-heavy projects.
       </p>
-      <p style="margin-top: 1rem">
-        Outside academics, I’m an active member of the <strong>Culturals</strong> and <strong>Ping! Magazine</strong> clubs, where I love contributing, organizing, and just bringing ideas to life. I enjoy working in fast-paced, creative spaces—especially ones that let me manage, collaborate, and learn on the go.
-      </p>
-      <p style="margin-top: 1rem">
-        When I’m not busy tinkering with code or design drafts, you’ll probably find me sketching, capturing moody visuals, or putting together something cool for Instagram.
+      <p>
+        Outside academics, I’m part of <strong>Culturals</strong> and <strong>Ping! Magazine</strong>. I sketch, click photos, and create visual content on the side.
       </p>
     </section>
 
-    <section>
+    <section id="media">
+      <h2>Photos</h2>
+      <img src="images/profile.jpg" alt="Profile Picture" class="main-pic" />
+      <div class="local-images">
+        <img src="images/1.jpg" alt="Local 1" />
+        <img src="images/2.jpg" alt="Local 2" />
+        <img src="images/3.jpg" alt="Local 3" />
+        <img src="images/4.jpg" alt="Local 4" />
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <ul>
+        <li>IIIT Hyderabad (2022 - Present) - BTech + MS in CSE and Geospatial Intelligence</li>
+        <li>Delhi Public School, Pune - 12th CBSE (2022)</li>
+        <li>St. Anne's High School - 10th ICSE (2020)</li>
+      </ul>
+      <h3>Achievements</h3>
+      <ul>
+        <li>Top 1% in National Design Contest 2024</li>
+        <li>Winner - IIIT-H Design-a-thon 2023</li>
+        <li>Finalist - Smart India Hackathon 2023</li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <ul>
+        <li>HTML, CSS, JS - ⭐⭐⭐⭐☆</li>
+        <li>Python, C/C++ - ⭐⭐⭐⭐☆</li>
+        <li>React, Flask, FastAPI - ⭐⭐⭐☆☆</li>
+        <li>Google Earth Engine, Geospatial ML - ⭐⭐⭐⭐☆</li>
+        <li>Figma, Photoshop - ⭐⭐⭐⭐☆</li>
+      </ul>
+    </section>
+
+    <section id="cv">
+      <h2>My CV</h2>
+      <a href="files/Maithily_Bhala_CV.pdf" target="_blank">Download My CV (PDF)</a>
+    </section>
+
+    <section id="text-analysis">
+      <h2>Text Analysis</h2>
+      <textarea id="inputText" rows="10" cols="100" placeholder="Paste your 10,000+ word text here..."></textarea>
+      <br><button onclick="analyzeText()">Analyze</button>
+      <div id="analysisResults"></div>
+    </section>
+
+    <section id="connect">
       <h2>Let's Connect</h2>
       <div class="socials">
-        <a href="mailto:maithilybhala1803@gmail.com">📧 maithilybhala1803@gmail.com</a>
+        <a href="mailto:maithilybhala1803@gmail.com">📧 Email</a>
         <a href="https://www.linkedin.com/in/maithily-bhala-54b0a4315/" target="_blank">💼 LinkedIn</a>
         <a href="https://github.com/maithily180" target="_blank">💻 GitHub</a>
         <a href="https://www.instagram.com/_paint.it_blck/" target="_blank">📸 Instagram</a>
@@ -50,5 +93,4 @@
     &copy; 2025 Maithily Bhala | Built with ✨ and caffeine
   </footer>
 </body>
-
 </html>
