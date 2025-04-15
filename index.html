@@ -3,51 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Maithily's Website</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Maithily's Personal Website</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header>
+    <h1>Welcome to Maithily's World</h1>
+  </header>
 
-  <h1>Hello, I'm Maithily!</h1>
+  <main>
+    <!-- Q1: About Section -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I am Maithily, a passionate and aspiring software enthusiast, currently exploring the world of code. Born in Pune, a city buzzing with heritage and tech alike, I bring creativity and curiosity into everything I build. Whether it's systems, websites, or games, I love weaving logic and art together.</p>
+      <div class="photos">
+        <img src="1.jpg" alt="Pune Local" />
+        <img src="2.jpg" alt="Pune Local" />
+        <img src="3.jpg" alt="Pune Local" />
+        <img src="4.jpg" alt="Pune Local" />
+      </div>
+    </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am an aspiring software engineer who loves solving problems and building meaningful technology. I'm passionate about AI, web dev, and making my family proud.</p>
-    <img src="images/profile.jpg" alt="Profile Picture" width="200">
-    <img src="images/your-birthplace1.jpg" alt="My Birthplace" width="200">
-  </section>
+    <!-- Q1: Education Section -->
+    <section id="education">
+      <h2>Education Background</h2>
+      <ul>
+        <li>High School: XYZ School, Pune</li>
+        <li>Junior College: ABC Junior College, Pune</li>
+        <li>BTech CSE: IIIT Hyderabad (expected 2026)</li>
+        <li>Achievements: Hackathon Finalist, Codeforces Pupil, AI/ML Research Intern</li>
+      </ul>
+    </section>
 
-  <section id="education">
-    <h2>Education & Achievements</h2>
-    <ul>
-      <li>School: XYZ High School</li>
-      <li>College: ABC University</li>
-      <li>Top 5 in National Coding Challenge</li>
-    </ul>
-  </section>
+    <!-- Q1: Skills Section -->
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <ul>
+        <li>Beginner: Docker, Node.js, TensorFlow</li>
+        <li>Intermediate: Python, HTML/CSS, FastAPI</li>
+        <li>Advanced: JavaScript, C, Git & GitHub</li>
+      </ul>
+    </section>
 
-  <section id="skills">
-    <h2>Technical Skills</h2>
-    <ul>
-      <li>HTML - Expert</li>
-      <li>CSS - Intermediate</li>
-      <li>JavaScript - Intermediate</li>
-      <li>Python - Advanced</li>
-    </ul>
-  </section>
+    <!-- Q1: CV Section -->
+    <section id="cv">
+      <h2>My CV</h2>
+      <a href="Maithily_CV.pdf" target="_blank">Download My CV (PDF)</a>
+    </section>
 
-  <section id="cv">
-    <h2>Download My CV</h2>
-    <a href="cv.pdf" download>Click here to view my CV (PDF)</a>
-  </section>
+    <!-- Q2: Click and View Tracker -->
+    <section id="tracker">
+      <h2>Click and View Tracker (Open Console)</h2>
+    </section>
 
-  <section id="text-analysis">
-    <h2>Paste Big Text Below (10,000+ words)</h2>
-    <textarea id="textInput" rows="15" cols="80"></textarea>
-    <br />
-    <button onclick="analyzeText()">Analyze Text</button>
-    <pre id="result"></pre>
-  </section>
+    <!-- Q3: Text Analysis Tool -->
+    <section id="text-analysis">
+      <h2>Text Analyzer</h2>
+      <textarea id="inputText" placeholder="Paste your text here..."></textarea>
+      <button onclick="analyzeText()">Analyze</button>
+      <div id="results"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Maithily. All rights reserved.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
