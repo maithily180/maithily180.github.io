@@ -7,28 +7,25 @@
 }
 
 :root {
-    /* Pastel Color Palette */
-    --primary-color: #a78bfa;
-    --secondary-color: #c4b5fd;
-    --accent-color: #ddd6fe;
-    --light-bg: #f3f4f6;
-    --dark-bg: #7c3aed;
-    --text-color: #4b5563;
-    --light-text: #f8fafc;
-    --header-bg: #fff;
-    --card-bg: #fff;
-    --shadow-color: rgba(124, 58, 237, 0.08);
+    /* Dark Brown Theme with Yellow, Pink, and Green */
+    --primary-color: #f5a623;        /* Yellow/Orange */
+    --secondary-color: #e07a5f;      /* Pink/Coral */
+    --accent-color: #81b29a;         /* Green */
+    --dark-bg: #3c2a21;              /* Dark Brown */
+    --darker-bg: #2c1810;            /* Darker Brown */
+    --light-text: #f9f4ef;           /* Off-White */
+    --card-bg: #4a3728;              /* Lighter Brown */
+    --shadow-color: rgba(0, 0, 0, 0.3);
     
-    /* Additional Pastel Colors */
-    --pastel-pink: #fecdd3;
-    --pastel-blue: #bfdbfe;
-    --pastel-green: #bbf7d0;
-    --pastel-yellow: #fef3c7;
+    /* Additional colors */
+    --highlight-yellow: #ffb627;     /* Brighter Yellow */
+    --highlight-pink: #ff7f50;       /* Brighter Pink */
+    --highlight-green: #7cbd9f;      /* Brighter Green */
 }
 
 body {
-    background-color: var(--light-bg);
-    color: var(--text-color);
+    background-color: var(--dark-bg);
+    color: var(--light-text);
     line-height: 1.6;
     transition: background-color 0.5s ease;
 }
@@ -45,7 +42,7 @@ header {
     text-align: center;
     padding: 25px 0;
     margin-bottom: 30px;
-    background-color: var(--header-bg);
+    background-color: var(--darker-bg);
     border-radius: 15px;
     box-shadow: 0 6px 20px var(--shadow-color);
     border-bottom: 3px solid var(--primary-color);
@@ -62,11 +59,8 @@ h1 {
     font-size: 2.7rem;
     margin-bottom: 20px;
     color: var(--primary-color);
-    background: linear-gradient(90deg, var(--dark-bg), var(--primary-color));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: gradientFlow 8s ease infinite;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    animation: pulse 4s infinite alternate;
 }
 
 /* Tab Navigation */
@@ -79,28 +73,28 @@ h1 {
 
 .tab-button {
     padding: 14px 28px;
-    background-color: var(--accent-color);
+    background-color: var(--card-bg);
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.1rem;
     font-weight: 600;
     transition: all 0.3s ease;
-    color: var(--dark-bg);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    color: var(--light-text);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .tab-button:hover {
-    background-color: var(--secondary-color);
-    color: var(--light-text);
+    background-color: var(--primary-color);
+    color: var(--darker-bg);
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .tab-button.active {
     background-color: var(--primary-color);
-    color: var(--light-text);
-    box-shadow: 0 4px 8px rgba(124, 58, 237, 0.3);
+    color: var(--darker-bg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Tab Content */
@@ -136,7 +130,7 @@ h1 {
     width: 100%;
     border-radius: 50%;
     box-shadow: 0 8px 16px var(--shadow-color);
-    border: 5px solid var(--accent-color);
+    border: 5px solid var(--secondary-color);
     transition: all 0.5s ease;
 }
 
@@ -193,14 +187,14 @@ h2 {
 h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
-    color: var(--secondary-color);
+    color: var(--highlight-yellow);
     animation: fadeIn 1.2s ease-in-out;
 }
 
 .education-item {
     margin-bottom: 25px;
     padding: 20px;
-    background-color: var(--light-bg);
+    background-color: var(--darker-bg);
     border-radius: 12px;
     box-shadow: 0 5px 10px var(--shadow-color);
     transition: all 0.3s ease;
@@ -209,7 +203,7 @@ h3 {
 .education-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px var(--shadow-color);
-    background-color: var(--pastel-blue);
+    border-left: 3px solid var(--secondary-color);
 }
 
 ul {
@@ -223,7 +217,7 @@ li {
 
 li:hover {
     transform: translateX(5px);
-    color: var(--dark-bg);
+    color: var(--highlight-yellow);
 }
 
 .skill-categories {
@@ -235,7 +229,7 @@ li:hover {
 .skill-category {
     flex: 1;
     min-width: 250px;
-    background-color: var(--light-bg);
+    background-color: var(--darker-bg);
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 5px 10px var(--shadow-color);
@@ -243,15 +237,15 @@ li:hover {
 }
 
 .skill-category:nth-child(1) {
-    background-color: var(--pastel-blue);
+    border-top: 3px solid var(--primary-color);
 }
 
 .skill-category:nth-child(2) {
-    background-color: var(--pastel-green);
+    border-top: 3px solid var(--secondary-color);
 }
 
 .skill-category:nth-child(3) {
-    background-color: var(--pastel-pink);
+    border-top: 3px solid var(--accent-color);
 }
 
 .skill-category:hover {
@@ -263,17 +257,16 @@ li:hover {
     display: inline-block;
     padding: 14px 30px;
     background-color: var(--primary-color);
-    color: var(--light-text);
+    color: var(--darker-bg);
     text-decoration: none;
     border-radius: 8px;
     font-weight: 600;
     transition: all 0.4s ease;
     box-shadow: 0 5px 10px var(--shadow-color);
-    animation: pulse 2s infinite alternate;
 }
 
 .cv-button:hover {
-    background-color: var(--dark-bg);
+    background-color: var(--highlight-yellow);
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 8px 16px var(--shadow-color);
 }
@@ -290,7 +283,9 @@ li:hover {
     width: 100%;
     height: 220px;
     padding: 18px;
-    border: 2px solid var(--accent-color);
+    border: 2px solid var(--secondary-color);
+    background-color: var(--darker-bg);
+    color: var(--light-text);
     border-radius: 8px;
     font-size: 1rem;
     resize: vertical;
@@ -307,18 +302,17 @@ li:hover {
     align-self: flex-start;
     padding: 14px 30px;
     background-color: var(--primary-color);
-    color: var(--light-text);
+    color: var(--darker-bg);
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
     transition: all 0.4s ease;
     box-shadow: 0 5px 10px var(--shadow-color);
-    animation: pulse 2s infinite alternate;
 }
 
 #analyze-button:hover {
-    background-color: var(--dark-bg);
+    background-color: var(--highlight-yellow);
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 8px 16px var(--shadow-color);
 }
@@ -330,7 +324,7 @@ li:hover {
 }
 
 .result-section {
-    background-color: var(--light-bg);
+    background-color: var(--darker-bg);
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 5px 10px var(--shadow-color);
@@ -338,19 +332,19 @@ li:hover {
 }
 
 .result-section:nth-child(1) {
-    background-color: var(--pastel-yellow);
+    border-left: 3px solid var(--primary-color);
 }
 
 .result-section:nth-child(2) {
-    background-color: var(--pastel-green);
+    border-left: 3px solid var(--secondary-color);
 }
 
 .result-section:nth-child(3) {
-    background-color: var(--pastel-blue);
+    border-left: 3px solid var(--accent-color);
 }
 
 .result-section:nth-child(4) {
-    background-color: var(--pastel-pink);
+    border-left: 3px solid var(--highlight-pink);
 }
 
 .result-section:hover {
@@ -369,7 +363,7 @@ footer {
     padding: 25px 0;
     color: var(--primary-color);
     font-size: 1rem;
-    background-color: var(--card-bg);
+    background-color: var(--darker-bg);
     border-radius: 15px;
     box-shadow: 0 6px 20px var(--shadow-color);
     transition: all 0.4s ease;
@@ -430,18 +424,6 @@ footer:hover {
     }
     to {
         transform: scale(1.03);
-    }
-}
-
-@keyframes gradientFlow {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
     }
 }
 
