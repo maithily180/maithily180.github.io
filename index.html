@@ -1,62 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maithily's World</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+  <title>Maithily Bhala</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #211427;
+      color: white;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #5F29C5;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 600;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      background-color: #301c46;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    a {
+      color: #a673ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .socials {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #2e1a4f;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
+
 <body>
   <header>
-    <h1>Welcome to Maithily's World</h1>
+    <h1>Maithily Bhala</h1>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am Maithily, a passionate and aspiring software enthusiast, currently exploring the world of code. Born in Pune, a city buzzing with heritage and tech alike, I bring creativity and curiosity into everything I build. Whether it's systems, websites, or games, I love weaving logic and art together.</p>
-    <div class="gallery">
-      <img src="1.jpg" alt="Pune Local" />
-      <img src="2.jpg" alt="Pune Local" />
-      <img src="3.jpg" alt="Pune Local" />
-      <img src="4.jpg" alt="Pune Local" />
-    </div>
-  </section>
+  <main>
+    <section>
+      <h2>About Me</h2>
+      <p>
+        Hey! I’m Maithily Bhala, a dual-degree student at IIIT Hyderabad, majoring in Computer Science and Geospatial Intelligence.
+      </p>
+      <p style="margin-top: 1rem">
+        I’m someone who loves building things—whether it’s through code, design, or just good teamwork. I find myself just as excited solving algorithmic problems and writing clean backend logic as I am crafting intuitive user experiences or leading club initiatives. My coursework keeps me sharp (and yes, I genuinely enjoy it), but it’s the balance of academics, creative expression, and hands-on project work that really energizes me.
+      </p>
+      <p style="margin-top: 1rem">
+        Currently, I serve as the <strong>Head of Design at DheemiLocal</strong> and am part of the <strong>Design Team at E-Cell, IIIT Hyderabad</strong>, where I’ve worked on everything from campaign design to branding for large-scale events. But I’m not just about design—I'm deeply into tech too, and have been part of multiple hackathons, coding projects, and collaborative builds that let me experiment with everything from networking to game dev.
+      </p>
+      <p style="margin-top: 1rem">
+        Outside academics, I’m an active member of the <strong>Culturals</strong> and <strong>Ping! Magazine</strong> clubs, where I love contributing, organizing, and just bringing ideas to life. I enjoy working in fast-paced, creative spaces—especially ones that let me manage, collaborate, and learn on the go.
+      </p>
+      <p style="margin-top: 1rem">
+        When I’m not busy tinkering with code or design drafts, you’ll probably find me sketching, capturing moody visuals, or putting together something cool for Instagram.
+      </p>
+    </section>
 
-  <section id="education">
-    <h2>Education Background</h2>
-    <ul>
-      <li>High School: XYZ School, Pune</li>
-      <li>Junior College: ABC Junior College, Pune</li>
-      <li>BTech CSE: IIIT Hyderabad (expected 2026)</li>
-      <li>Achievements: Hackathon Finalist, Codeforces Pupil, AI/ML Research Intern</li>
-    </ul>
-  </section>
+    <section>
+      <h2>Let's Connect</h2>
+      <div class="socials">
+        <a href="mailto:maithilybhala1803@gmail.com">📧 maithilybhala1803@gmail.com</a>
+        <a href="https://www.linkedin.com/in/maithily-bhala-54b0a4315/" target="_blank">💼 LinkedIn</a>
+        <a href="https://github.com/maithily180" target="_blank">💻 GitHub</a>
+        <a href="https://www.instagram.com/_paint.it_blck/" target="_blank">📸 Instagram</a>
+      </div>
+    </section>
+  </main>
 
-  <section id="skills">
-    <h2>Technical Skills</h2>
-    <ul>
-      <li>Beginner: Docker, Node.js, TensorFlow</li>
-      <li>Intermediate: Python, HTML/CSS, FastAPI</li>
-      <li>Advanced: JavaScript, C, Git & GitHub</li>
-    </ul>
-  </section>
-
-  <section id="cv">
-    <h2>My CV</h2>
-    <a href="Maithily_CV.pdf" target="_blank">Download My CV (PDF)</a>
-  </section>
-
-  <section id="tracker">
-    <h2>Click and View Tracker (Open Console)</h2>
-    <p>Interact with elements above and check your browser console to see tracking in action.</p>
-  </section>
-
-  <section id="text-analysis">
-    <h2>Text Analyzer</h2>
-    <textarea id="textInput" rows="15" cols="80" placeholder="Paste your 10000+ word text here..."></textarea><br>
-    <button onclick="analyzeText()">Analyze Text</button>
-    <pre id="textOutput"></pre>
-  </section>
+  <footer>
+    &copy; 2025 Maithily Bhala | Built with ✨ and caffeine
+  </footer>
 </body>
+
 </html>
