@@ -1,46 +1,56 @@
-// Track clicks and views
-document.addEventListener("click", function(e) {
-    console.log(`${new Date().toISOString()}, click, ${e.target.tagName}`);
-  });
-  
-  window.addEventListener("load", function () {
-    console.log(`${new Date().toISOString()}, view, Page Loaded`);
-  });
-  
-  // Text Analysis Function
-  function analyzeText() {
-    const text = document.getElementById("textInput").value;
-  
-    const letters = (text.match(/[a-zA-Z]/g) || []).length;
-    const words = (text.match(/\b\w+\b/g) || []).length;
-    const spaces = (text.match(/ /g) || []).length;
-    const newlines = (text.match(/\n/g) || []).length;
-    const specialSymbols = (text.match(/[^a-zA-Z0-9\s]/g) || []).length;
-  
-    const pronouns = ['he', 'she', 'it', 'they', 'we', 'i', 'you', 'him', 'her', 'us', 'them'];
-    const prepositions = ['in', 'on', 'at', 'by', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below'];
-    const articles = ['a', 'an', 'the'];
-  
-    const tokens = text.toLowerCase().match(/\b\w+\b/g) || [];
-    
-    let pronounCount = {}, prepCount = {}, articleCount = {};
-  
-    tokens.forEach(word => {
-      if (pronouns.includes(word)) pronounCount[word] = (pronounCount[word] || 0) + 1;
-      if (prepositions.includes(word)) prepCount[word] = (prepCount[word] || 0) + 1;
-      if (articles.includes(word)) articleCount[word] = (articleCount[word] || 0) + 1;
+// Q2: Click and View Tracker
+document.addEventListener("DOMContentLoaded", () => {
+  const allElements = document.querySelectorAll("*");
+
+  allElements.forEach((el) => {
+    const type = el.tagName.toLowerCase();
+    console.log(`${new Date().toISOString()}, view, ${type}`);
+    el.addEventListener("click", () => {
+      console.log(`${new Date().toISOString()}, click, ${type}`);
     });
-  
-    document.getElementById("result").textContent = `
-  Letters: ${letters}
-  Words: ${words}
-  Spaces: ${spaces}
-  Newlines: ${newlines}
-  Special Symbols: ${specialSymbols}
-  
-  Pronouns: ${JSON.stringify(pronounCount, null, 2)}
-  Prepositions: ${JSON.stringify(prepCount, null, 2)}
-  Articles: ${JSON.stringify(articleCount, null, 2)}
-    `;
-  }
-  
+  });
+});
+
+// Q3: Text Analyzer
+function analyzeText() {
+  const text = document.getElementById("inputText").value;
+  const resultsDiv = document.getElementById("results");
+
+  const letters = text.match(/[a-zA-Z]/g)?.length || 0;
+  const words = text.match(/\\b\\w+\\b/g)?.length || 0;
+  const spaces = text.match(/ /g)?.length || 0;
+  const newlines = text.match(/\\n/g)?.length || 0;
+  const specials = text.match(/[^\\w\\s\\n]/g)?.length || 0;
+
+  const tokens = text.toLowerCase().split(/\\s+/);
+  const pronouns = ['i', 'you', 'he', 'she', 'it', 'we', 'they'];
+  const prepositions = ['on', 'in', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into'];
+  const articles = ['a', 'an'];
+
+  const countGroup = (list) => {
+    const counts = {};
+    for (const token of tokens) {
+      if (list.includes(token)) {
+        counts[token] = (counts[token] || 0) + 1;
+      }
+    }
+    return counts;
+  };
+
+  const pronounCount = countGroup(pronouns);
+  const prepositionCount = countGroup(prepositions);
+  const articleCount = countGroup(articles);
+
+  resultsDiv.innerHTML = `
+    <strong>Text Statistics:</strong><br/>
+    Letters: ${letters}<br/>
+    Words: ${words}<br/>
+    Spaces: ${spaces}<br/>
+    Newlines: ${newlines}<br/>
+    Special Symbols: ${specials}<br/><br/>
+
+    <strong>Pronoun Count:</strong><br/>${JSON.stringify(pronounCount)}<br/><br/>
+    <strong>Preposition Count:</strong><br/>${JSON.stringify(prepositionCount)}<br/><br/>
+    <strong>Article Count:</strong><br/>${JSON.stringify(articleCount)}<br/>
+  `;
+}
